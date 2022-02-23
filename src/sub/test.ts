@@ -13,8 +13,9 @@ describe('sub', () => {
       hours: 5,
       minutes: 9,
       seconds: 30,
+      milliseconds: 1000,
     })
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 49))
   })
 
   it('supports an undefined value in the duration object', () => {
@@ -26,8 +27,9 @@ describe('sub', () => {
       hours: 5,
       minutes: 9,
       seconds: 30,
+      milliseconds: 1000,
     })
-    assert.deepStrictEqual(result, new Date(2016, 8 /* Sep */, 1, 10, 19, 50))
+    assert.deepStrictEqual(result, new Date(2016, 8 /* Sep */, 1, 10, 19, 49))
   })
 
   it('returns same date object when passed empty duration values', () => {
@@ -39,6 +41,7 @@ describe('sub', () => {
       hours: undefined,
       minutes: undefined,
       seconds: undefined,
+      milliseconds: undefined,
     })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
