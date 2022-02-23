@@ -25,6 +25,7 @@ import type { Duration } from '../types'
  * | hours          | Amount of hours to be added        |
  * | minutes        | Amount of minutes to be added      |
  * | seconds        | Amount of seconds to be added      |
+ * | milliseconds   | Amount of seconds to be subtracted |
  *
  * All values default to 0
  *
@@ -41,8 +42,9 @@ import type { Duration } from '../types'
  *   hours: 5,
  *   minutes: 9,
  *   seconds: 30,
+ *   milliseconds: 1000,
  * })
- * //=> Thu Jun 15 2017 15:29:20
+ * //=> Thu Jun 15 2017 15:29:21
  */
 export default function add(
   dirtyDate: Date | number,
@@ -59,6 +61,7 @@ export default function add(
   const hours = duration.hours ? toInteger(duration.hours) : 0
   const minutes = duration.minutes ? toInteger(duration.minutes) : 0
   const seconds = duration.seconds ? toInteger(duration.seconds) : 0
+  const milliseconds = duration.milliseconds ? toInteger(duration.milliseconds) : 0
 
   // Add years and months
   const date = toDate(dirtyDate)
@@ -72,7 +75,7 @@ export default function add(
   // Add days, hours, minutes and seconds
   const minutesToAdd = minutes + hours * 60
   const secondsToAdd = seconds + minutesToAdd * 60
-  const msToAdd = secondsToAdd * 1000
+  const msToAdd = milliseconds + secondsToAdd * 1000
   const finalDate = new Date(dateWithDays.getTime() + msToAdd)
 
   return finalDate

@@ -14,8 +14,9 @@ describe('add', () => {
       hours: 5,
       minutes: 9,
       seconds: 30,
+      milliseconds: 1000,
     })
-    assert.deepStrictEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 20))
+    assert.deepStrictEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 21))
   })
 
   it('supports an undefined value in the duration object', () => {
@@ -27,8 +28,9 @@ describe('add', () => {
       hours: 5,
       minutes: 9,
       seconds: 30,
+      milliseconds: 1000,
     })
-    assert.deepStrictEqual(result, new Date(2015, 5 /* June */, 15, 15, 29, 20))
+    assert.deepStrictEqual(result, new Date(2015, 5 /* June */, 15, 15, 29, 21))
   })
 
   it('returns same date object when passed empty duration values', () => {
@@ -40,6 +42,7 @@ describe('add', () => {
       hours: undefined,
       minutes: undefined,
       seconds: undefined,
+      milliseconds: undefined,
     })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
